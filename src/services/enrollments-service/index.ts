@@ -1,4 +1,3 @@
-import { request } from "@/utils/request";
 import { AddressEnrollment } from "@/protocols";
 import { getAddress } from "@/utils/cep-service";
 import { notFoundError } from "@/errors";
@@ -64,6 +63,7 @@ async function createOrUpdateEnrollmentWithAddress(params: CreateOrUpdateEnrollm
   //TODO - Verificar se o CEP é válido
 
   const result = await getAddressFromCEP(address.cep);
+  
   if (result.error) {
     throw notFoundError();
   }
